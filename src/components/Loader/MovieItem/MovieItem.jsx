@@ -6,7 +6,7 @@ import PropType from 'prop-types'
 const MovieItem = ({ url, title, activeId, location }) => {
     return (
         <li className={style.item}>
-            <Link to={{`/movies/${activeId}` state={{ from: location }}>
+            <Link to={`/movies/${activeId}`} state={{ from: location }}>
                 <img className={style.img} src={url !== null ? `https://image.tmdb.org/t/p/w200${url}` : ''} alt={title} />
                 
                 <p className={style.label}>{title}</p>

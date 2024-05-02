@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { getHomeMovies } from 'Api/MovieApi';
 import style from './MovieList.module.css';
 import { useLocation } from 'react-router-dom';
+import Loader from 'components/Loader/Loader';
 
 const pageStatus = {
     loading: 'loading',
@@ -52,5 +53,5 @@ const MovieList = () => {
             }
         </>
     );
-
-    export default MovieList
+}
+export default MovieList;
