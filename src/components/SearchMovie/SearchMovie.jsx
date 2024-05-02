@@ -16,15 +16,18 @@ const SearchMovie = ({ value, status, movies }) => {
 
     return (
         <>
-            {status === Status.Loading &&
+            {status === Status.Success && movies.lenght>0 &&
                 (<ul className={style.movieList}>
-                {movies.map((item, index) => {
+                {movies.map((item) => {
                     return (
-                        <>
-                            <li className={style.movieItem} key={index}>
-                                <MovieItem url={item.poster_path} title={item.title} activeId={item.id} location={location} />
-                            </li>
-                        </>)
+                        
+                   <MovieItem 
+                   url={item.poster_path} 
+                   title={item.title} 
+                   activeId={item.id} 
+                   location={location} />
+                            
+                        )
                 })}
               </ul>
                 )};

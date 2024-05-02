@@ -1,22 +1,27 @@
 import { useState } from "react";
 import style from "./SearchFrom.module.css";
-import PropTypes from "prop-types";
 
-const SearchFrom = ({ onSubmit }) => {
+
+
+const SearchForm = () => {
+
     const [query, setQuery] = useState('');
+   const onSearch = (query) => {
+        console.log(query);
+    }
     
-    const handleSubmit = (e) => {
+    function handleSubmit (e) {
         e.preventDefault();
-        onSubmit(query);
+        onSearch(query);
         setQuery('');
     }
-        const handleChange = (e) => {
-            setQuery(e.target.value);
-        }
+    function handleChange(e) {
+        setQuery(e.target.value.toLowerCase());
+    }
         return (
             <form className={style.form} onSubmit={handleSubmit}>
-                <label className={style.label} htmlFor="search">Search movie by name</label>
-                <input className={style.full} type="text" value={query} onChange={handleChange} name="search" placeholder="Search movie..." autocomplete="off" />
+                <h2 className={style.label}>Search movie by name</h2>
+                <input className={style.full} type="text" value={query} onChange={handleChange} name="search" placeholder="Search movie..."  />
                 <button className={style.search} type="submit">Search</button>
             </form>
         )
@@ -24,7 +29,4 @@ const SearchFrom = ({ onSubmit }) => {
     };
 
 
-    SearchFrom.propTypes = {
-        onSubmit: PropTypes.func.isRequired
-};
-    export default SearchFrom;
+    export default SearchForm;

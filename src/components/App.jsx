@@ -10,7 +10,7 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
-    <div className="App">
+   <>
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
@@ -28,7 +28,7 @@ export const App = () => {
             </Route>
           </Routes>
         </Suspense>
-              </div>
+             </>
               );
               }
 
