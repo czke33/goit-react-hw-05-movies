@@ -1,0 +1,13 @@
+.wrapper{
+  padding: 15px 0px;
+}
+
+.item{
+  margin-bottom: 20px;
+}
+
+.actor-details{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

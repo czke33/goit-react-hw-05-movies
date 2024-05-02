@@ -1,29 +1,30 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import Header from './Header/Header';
-import { lazy, Suspense } from 'react';
-import Loader from 'components/Loader/Loader';
-import Container from './Container/Container';
-
+import './App.css';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { lazy } from 'react';
+import SharedLayout from './SharedLayout/SharedLayout';
 
 const HomePage = lazy(() => import('../Pages/HomePage'));
-const MoviePage = lazy(() => import('../Pages/MoviesPage'));
-const MovieDetails = lazy(() => import('../Pages/MovieDetails'));
-const NotFound = lazy(() => import('../Pages/NotFound'));
+const MoviesPage = lazy(() => import('../Pages/MoviesPage'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
- export const App = () => {
+function App() {
   return (
-    <Container>
-      <Header />
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="movies" element={<MoviePage />} />
-          <Route path="movies/:movieId" element={<MovieDetails />} />
-          <Route path="/" element={<NotFound/>}/>
-            <Route path="*" element={<Navigate to="/" replace={true} />} />
-        </Routes>
-      </Suspense>
-    </Container>
+    <>
+      <Routes>
+        <Route path='/' element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path='movies' element={<MoviesPage />} />
+          <Route path='movies/:movieId' element={<MovieDetails />}>
+            <Route path='cast' element={<Cast />}></Route>
+            <Route path='reviews' element={<Reviews />}></Route>
+          </Route>
+          <Route path='*' element={<Navigate to='/' replace />} />
+        </Route>
+      </Routes>
+    </>
   );
-};
+}
 
+export default App;

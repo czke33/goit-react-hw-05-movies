@@ -1,23 +1,38 @@
-import { useState, useEffect } from 'react';
-import MoviesGallery from '../components/MovieGallery/MovieGallery';
-import { fetchTrendingMovies } from '../Api/MovieApi';
-import '../index.css';
+import React, { useEffect, useState } from "react";
+import { fetchTrendingMovies } from "../Services/Api";
+import { Link } from "react-router-dom";
 
-export default function HomePage() {
-    const [movies, setMovies] = useState([]);
-    
-    useEffect(() => {
-        fetchTrendingMovies()
-            .then(request => setMovies(request.results)
-            );
-    }, [])
+const Home = () => {
+  const [trending, setTrending] = useState([]);
+  const showTrending = async () => {
+    try {
+      const fetchedMovies = await fetchTrendingMovies();
+      setTrending(fetchedMovies);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    // console.log(movies);
-    return (
-        <>
-            <h1>Trending today</h1>
+  useEffect(() => {
+    showTrending();
+  }, []);
 
-            <MoviesGallery movies={movies} />
-        </>
-    );
+  return (
+    <>
+      <h2>Tranding today</h2>
+      <ul>
+        {trending.map((movie) => {
+          return (
+            <li key={movie.id}>
+              <Link to={`movies/${movie.id}`} state={{ from: "/" }}>
+                {movie.title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
 };
+
+export default Home;
