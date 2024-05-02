@@ -1,7 +1,8 @@
 import { getMovieCredits } from "Api/MovieApi";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import style from './Credits.module.css'
+import style from './Credits.module.css';
+import Loader from "components/Loader/Loader";
 
 const pageStatus = {
     loading: 'loading',
@@ -34,7 +35,7 @@ const pageStatus = {
 
     return (
         <>
-        {status === pageStatus.loading && <p>Loading...</p>}
+        {status === pageStatus.loading && <p><Loader/></p>}
         {status === pageStatus.error && <p className={style.error}>Error</p>}
         {status === pageStatus.success && cast.lenght === 0 && <p className={style.error}>No cast found</p>}
         {status === pageStatus.success && (
