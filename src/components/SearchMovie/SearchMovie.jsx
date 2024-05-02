@@ -3,6 +3,7 @@ import MovieItem from 'components/Loader/MovieItem/MovieItem';
 import style from './MovieList.module.css';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
+import Error from 'Helpers/Error/Error';
 
 const Status = {
     Loading: 'loading',
