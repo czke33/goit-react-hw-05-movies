@@ -1,8 +1,8 @@
-import { getMovieCredits } from "Api/MovieApi";
+import { getMovieCast } from "../../Api/MovieApi";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import style from './Credits.module.css';
-import Loader from "components/Loader/Loader";
+import style from './Cast.module.css';
+import Loader from "../Loader/Loader";
 
 const pageStatus = {
     loading: 'loading',
@@ -22,7 +22,7 @@ const pageStatus = {
         setStatus(pageStatus.loading);
         async function fetchData() {
             try {
-                const data = await getMovieCredits(movieId);
+                const data = await getMovieCast(movieId);
                 setCast(data.cast);
                 setStatus(pageStatus.success);
             }

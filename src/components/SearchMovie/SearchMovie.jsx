@@ -1,6 +1,6 @@
 import React from 'react';
-import MovieItem from 'components/Loader/MovieItem/MovieItem';
-import style from './MovieList.module.css';
+import MovieItem from 'components/MovieItem/MovieItem';
+import style from './SearchMovie.module.css';
 import propTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import Error from 'Helpers/Error/Error';

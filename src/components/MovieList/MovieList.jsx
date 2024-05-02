@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieItem from 'components/Loader/MovieItem/MovieItem';
+import MovieItem from 'components/MovieItem/MovieItem';
 import { useState, useEffect } from 'react';
 import { getHomeMovies } from 'Api/MovieApi';
 import style from './MovieList.module.css';

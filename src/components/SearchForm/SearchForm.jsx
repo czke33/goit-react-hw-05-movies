@@ -1,5 +1,5 @@
 import { useState } from "react";
-import style from "./MovieList.module.css";
+import style from "./SearchFrom.module.css";
 import PropTypes from "prop-types";
 
 const SearchFrom = ({ onSubmit }) => {
