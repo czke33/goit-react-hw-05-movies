@@ -10,7 +10,7 @@ const pageStatus = {
     init: 'init'
 };
 
-export const Credits = () => {
+ const Credits = () => {
     const [cast, setCast] = useState([]);
     const [status, setStatus] = useState(pageStatus.init);
 
