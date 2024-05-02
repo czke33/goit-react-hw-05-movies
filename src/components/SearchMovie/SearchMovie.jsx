@@ -1,7 +1,7 @@
 import React from 'react';
 import MovieItem from 'components/Loader/MovieItem/MovieItem';
 import style from './MovieList.module.css';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import Error from 'Helpers/Error/Error';
 
@@ -32,10 +32,10 @@ const SearchMovie = ({ value, status, movies }) => {
         </>
     )
 }
-SearchMovie.PropTypes = {
-    value: PropTypes.string.isRequired,
-    status: PropTypes.oneOf(Object.values(Status)).isRequired,
-    movies: PropTypes.arrayOf(PropTypes.object).isRequired
+SearchMovie.propTypes = {
+    value: propTypes.string.isRequired,
+    status: propTypes.oneOf(Object.values(Status)).isRequired,
+    movies: propTypes.arrayOf(propTypes.object).isRequired
 };
 
 export default SearchMovie;

@@ -55,3 +55,13 @@ export async function getMovieReviews(id) {
     });
     return response.data;
 }
+
+export async function getMovieTrailer(id) {
+    const response = await axios.get('/movie/' + id + '/videos', {
+        params: {
+            api_key: API_KEY,
+            language: 'en-US'
+        }
+    });
+    return response.data;
+}
