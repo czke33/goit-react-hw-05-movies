@@ -1,34 +1,29 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './Header/Header';
 import { lazy, Suspense } from 'react';
+import Loader from 'components/Loader/Loader';
+import Container from './Container/Container';
 
-const Home = lazy(() => import('../Pages/Home/Home'));
-const MovieDetails = lazy(() => import('../Pages/MovieDetail/MovieDetail'));
-const Movies = lazy(() => import('../Pages/Movies/Movies'));
-const Credits = lazy(() => import('./Cast/Cast'));
-const Reviews = lazy(() => import('./Reviews/Reviews'));
 
-export const App = () => {
+const HomePage = lazy(() => import('../Pages/HomePage'));
+const MoviePage = lazy(() => import('../Pages/MoviesPage'));
+const MovieDetails = lazy(() => import('../Pages/MovieDetails'));
+const NotFound = lazy(() => import('../Pages/NotFound'));
+
+ export const App = () => {
   return (
-   <>
+    <Container>
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />}>
-            <Route path="movies/:movieId" element={<MovieDetails />}>
-              </Route>
-              <Route path="credits" element={<Credits />}>
-                <Route path="reviews" element={<Reviews />}>
-                  </Route>
-                  <Route path="*" element={<Navigate to="/" replace={true} />} />
-                </Route>
-                <Route path="*" element={<Navigate to="/" replace={true} />} />
-             
-            </Route>
-          </Routes>
-        </Suspense>
-             </>
-              );
-              }
+          <Route path="/" element={<HomePage />} />
+          <Route path="movies" element={<MoviePage />} />
+          <Route path="movies/:movieId" element={<MovieDetails />} />
+          <Route path="/" element={<NotFound/>}/>
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
+        </Routes>
+      </Suspense>
+    </Container>
+  );
+};
 
